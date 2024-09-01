@@ -4,6 +4,7 @@ package com.example.springwebregistration.controller;
 import com.example.springwebregistration.dto.UserDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +21,12 @@ public class AuthController {
     }
 
     @PostMapping("/register/save")
-    public String registerSave(@ModelAttribute("user") UserDto user){
+    public String registerSave(@ModelAttribute("user") UserDto user , BindingResult result){
+
+        System.out.println(result);
+        if(result.hasErrors()){
+            return "register";
+        }
         this.user.setFirstName(user.getFirstName());
         this.user.setLastName(user.getLastName());
         this.user.setEmail(user.getEmail());

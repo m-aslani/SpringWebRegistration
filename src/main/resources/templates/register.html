@@ -32,24 +32,21 @@
                             <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
                             <p class="text-white-50 mb-5">Please Register First!</p>
 
-<!--                            <div th:if="${param.success}">-->
-<!--                                <div class="alert alert-info">-->
-<!--                                    You have successfully registered our app!-->
-<!--                                </div>-->
-<!--                            </div>-->
-
                             <form method="post" th:action="@{/register/save}" th:object="${user}">
                             <div data-mdb-input-init class="form-outline mb-4">
 <!--                                <label class="form-label" for="typeFName">First Name</label>-->
                                 <input type="text" th:field="*{firstName}" name="first_name" id="typeFName" class="form-control  form-control-lg" placeholder="First name" />
+                                <p th:if="${#fields.hasErrors('firstName')}" th:errors = "*{firstName}" class="text-danger"></p>
                             </div>
                             <div data-mdb-input-init class="form-outline mb-4">
 <!--                                <label class="form-label" for="typeLName">Last Name</label>-->
                                 <input type="text" th:field="*{lastName}" name="last_name" id="typeLName" class="form-control form-control-lg" placeholder="Last Name" />
+                                <p th:if="${#fields.hasErrors('lastName')}" th:errors = "*{lastName}" class="text-danger"></p>
                             </div>
                             <div data-mdb-input-init class="form-outline mb-4">
 <!--                                <label class="form-label" for="typeEmailX">Email</label>-->
                                 <input type="email" th:field="*{email}" id="typeEmailX" class="form-control form-control-lg" placeholder="Email" />
+                                <p th:if="${#fields.hasErrors('email')}" th:errors = "*{email}" class="text-danger"></p>
                             </div>
 
                             <button class="btn btn-outline-light btn-lg px-5" type="submit">Submit</button>

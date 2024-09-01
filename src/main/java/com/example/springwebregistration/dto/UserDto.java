@@ -1,9 +1,16 @@
 package com.example.springwebregistration.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+
 public class UserDto {
 
+    @NotEmpty(message = "please enter your first name!" )
     private String firstName;
+    @NotBlank(message = "please enter your last name!" )
     private String lastName;
+    @Email(message = "please enter a valid E-mail!" , regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")
     private String email;
     private String dateOfBirth;
 
